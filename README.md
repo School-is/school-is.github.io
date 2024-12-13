@@ -1,2 +1,2 @@
-<h1>https://School-is.github.io</h1>
-<p>https://School-is.github.io/Coolgame.html</p>
+<h1>https://school-is.github.io</h1>
+<p>https://school-is.github.io/Coolgame.html</p>
