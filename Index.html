@@ -1,1 +1,202 @@
+<!DOCTYPE html>
+<html>
 
+  <body style="background-color: your background color;">
+
+    <<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catch the Falling Stars</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+        }
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas"></canvas>
+
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let basket = {
+            x: canvas.width / 2 - 50,
+            y: canvas.height - 80,
+            width: 100,
+            height: 20,
+            color: 'blue',
+            speed: 20
+        };
+
+        let stars = [];
+        let score = 0;
+        let gameOver = false;
+
+        function createStar() {
+            const size = Math.random() * 20 + 10;
+            stars.push({
+                x: Math.random() * canvas.width,
+                y: -size,
+                size: size,
+                speed: Math.random() * 3 + 2,
+                color: 'gold'
+            });
+        }
+
+        function drawBasket() {
+            ctx.fillStyle = basket.color;
+            ctx.fillRect(basket.x, basket.y, basket.width, basket.height);
+        }
+
+        function drawStars() {
+            stars.forEach(star => {
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.size / 2, 0, Math.PI * 2);
+                ctx.fillStyle = star.color;
+                ctx.fill();
+            });
+        }
+
+        function moveStars() {
+            stars.forEach(star => {
+                star.y += star.speed;
+            });
+        }
+
+        function detectCollisions() {
+            stars = stars.filter(star => {
+                if (
+                    star.x > basket.x &&
+                    star.x < basket.x + basket.width &&
+                    star.y + star.size / 2 > basket.y &&
+                    star.y < basket.y + basket.height
+                ) {
+                    score++;
+                    return false; // Remove star
+                }
+                if (star.y > canvas.height) {
+                    gameOver = true;
+                    return false;
+                }
+                return true;
+            });
+        }
+
+        function displayScore() {
+            ctx.font = '24px Arial';
+            ctx.fillStyle = 'black';
+            ctx.fillText(`Score: ${score}`, 20, 40);
+        }
+
+        function displayGameOver() {
+            ctx.font = '48px Arial';
+            ctx.fillStyle = 'red';
+            ctx.fillText('Game Over!', canvas.width / 2 - 100, canvas.height / 2);
+            ctx.font = '24px Arial';
+            ctx.fillStyle = 'black';
+            ctx.fillText(`Final Score: ${score}`, canvas.width / 2 - 80, canvas.height / 2 + 40);
+        }
+
+        function update() {
+            if (gameOver) {
+                displayGameOver();
+                return;
+            }
+
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            drawBasket();
+            drawStars();
+            moveStars();
+            detectCollisions();
+            displayScore();
+
+            requestAnimationFrame(update);
+        }
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'ArrowLeft' && basket.x > 0) {
+                basket.x -= basket.speed;
+            } else if (e.key === 'ArrowRight' && basket.x + basket.width < canvas.width) {
+                basket.x += basket.speed;
+            }
+        });
+
+        canvas.addEventListener('touchstart', e => {
+            const touchX = e.touches[0].clientX;
+            if (touchX < canvas.width / 2) {
+                basket.x -= basket.speed;
+            } else {
+                basket.x += basket.speed;
+            }
+        });
+
+        setInterval(createStar, 1000);
+        update();
+    </script>
+</body>
+</html>
+>
+
+</body>
+
+
+
+  <head>
+
+    <title>School-is | Home</title>
+
+    <style>
+
+      ul {
+
+        list-style-type: none;
+
+        margin: 0;
+
+        padding: 0;
+
+        align-content: center;
+
+        overflow: hidden;
+
+      }
+
+    </style>
+
+  </head>
+
+  <body>
+
+
+
+    <h1>Welcome!</h1>
+
+    <p>Here are some game links Chat gpt coded,</p>
+
+
+
+    <ul>
+
+<li><a href=“file name”>what you want it to be named</a><li>
+
+</body>
+
+
+
+      </u>
+
+
+
+</body
